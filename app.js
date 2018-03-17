@@ -5,7 +5,6 @@ var favi = require('serve-favicon');
 var logger = require('morgan');
 
 var books = require("./routes/book");
-var index = require("./routes/index");
 
 //mongoose
 var mongoose = require('mongoose');
@@ -23,10 +22,9 @@ app.use(bodyParser.urlencoded({'extended': 'false'}));
 app.use(logger('dev'));
 
 //static folder "client" 
-app.use(express.static(path.join(__dirname, 'client')));
+app.use('/books', express.static(path.join(__dirname, 'client')));
 
-app.use('/', index)
-app.use('/api', books)
+app.use('/book', books)
 
 //start server
 
@@ -41,6 +39,3 @@ mongoose.connect('mongodb://127.0.0.1/bookStore', {
     useMongoClient: true})
         .then( ()=> console.log('connected!'))
         .catch( (e) => console.error(e));
-MongoDB.once('open', function() {
-            console.log("mongodb connection open");
-          });
