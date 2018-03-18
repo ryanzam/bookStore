@@ -1,7 +1,7 @@
 var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
-var favi = require('serve-favicon');
+var favicon = require('serve-favicon');
 var logger = require('morgan');
 
 var books = require("./routes/book");
@@ -10,32 +10,39 @@ var books = require("./routes/book");
 var mongoose = require('mongoose');
 var bluebird = require('bluebird');
 
-
-
-var port = 3000;
-
 var app = express();
 
-//middleware
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({'extended': 'false'}));
 app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({'extended':'false'}));
+app.use(express.static(path.join(__dirname, 'dist')));
+app.use('/books', express.static(path.join(__dirname, 'dist')));
+app.use('/book', books);
 
-//static folder "client" 
-app.use('/books', express.static(path.join(__dirname, 'client')));
-
-app.use('/book', books)
-
-//start server
-
-app.listen(port, function(){
-    console.log("Server started : " + port)
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
 });
+
+// error handler
+app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
+});
+
+module.exports = app;
 
 
 //mongodb
 mongoose.Promise = bluebird
 mongoose.connect('mongodb://127.0.0.1/bookStore', {
     useMongoClient: true})
-        .then( ()=> console.log('connected!'))
+        .then( ()=> console.log('mongodb connected!'))
         .catch( (e) => console.error(e));
