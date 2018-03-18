@@ -7,6 +7,9 @@ import {Routes, RouterModule} from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { BookComponent } from './book/book.component';
+import { DetailsComponent } from './details/details.component';
+import { CreateComponent } from './create/create.component';
+import { UpdateComponent } from './update/update.component';
 
 
 const routes: Routes = [
@@ -18,13 +21,28 @@ const routes: Routes = [
   { path: '',
     redirectTo: '/books',
     pathMatch: 'full'
-  }
+  },
+  {
+    path: 'details/:id',
+    component: DetailsComponent
+  },
+  {
+    path: 'create',
+    component: CreateComponent
+  },
+  {
+    path: 'update/:id',
+    component: UpdateComponent
+  },
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    BookComponent
+    BookComponent,
+    DetailsComponent,
+    CreateComponent,
+    UpdateComponent,
   ],
   imports: [
     BrowserModule,

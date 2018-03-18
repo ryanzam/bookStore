@@ -1,7 +1,34 @@
 <div class="container">
-    <h1>Book List</h1>
-    <div *ngFor="let bk of books">
-        <p>{{bk.title}}</p>
-        <p>{{bk.description}}</p>
-    </div>
-  </div>
+  <nav class="navbar navbar-light bg-light">
+    <span class="navbar-text">
+      BookStore - Mean Stack CRUD App
+    </span>
+  </nav>
+</div>
+
+<div class="container">
+    <h1>Available Books</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Title</th>
+          <th scope="col">Description</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let bk of books">
+          <td>
+              {{bk.title}}
+          </td>
+          <td>{{bk.description}}</td>
+          <td>
+              <a [routerLink]="['/details', bk._id]" class="btn btn-info">view details</a>
+          </td>
+        </tr>
+    </table> 
+
+<div class="col-md-12">
+  <a [routerLink]="['/create']" class="btn btn-primary btn-lg">Add a new Book</a>
+</div>
+    

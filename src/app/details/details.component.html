@@ -1,0 +1,27 @@
+<div class="container">
+  <nav class="navbar navbar-light bg-light">
+    <span class="navbar-text">
+      BookStore - Mean Stack CRUD App
+    </span>
+  </nav>
+</div>
+
+<div class="container">
+    <ul class="list-group">
+        <li class="list-group-item active">{{book.title}}</li>
+        <li class="list-group-item">{{book.description}}</li>
+        <li class="list-group-item">{{book.authour}}</li>
+        <li class="list-group-item">{{book.published_date}}</li>
+        <li class="list-group-item">{{book.updated}}</li>
+      </ul>
+
+
+      <div class="row">
+          <div class="col-md-12">
+            <a [routerLink]="['/update', book._id]" class="btn btn-success">Update Book</a>
+
+            <button class="btn btn-danger" type="button" (click) = "deleteBook(book._id)">Delete Book</button>
+
+          </div>
+        </div>
+</div>
