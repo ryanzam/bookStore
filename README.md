@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # BookStore
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.3.
@@ -29,4 +29,5 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 =======
 # bookStore
 a MEA(angular5)N book store app
->>>>>>> 2c11b6d02255e2bfc3f580738818a4bb5bea0266
+
+[Live on heroku] (https://glacial-cove-24525.herokuapp.com/)
