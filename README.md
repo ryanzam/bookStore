@@ -9,4 +9,4 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 # bookStore
 a MEA(angular5)N book store app
 
-[Live on heroku] (https://glacial-cove-24525.herokuapp.com/)
+[Live on heroku](https://glacial-cove-24525.herokuapp.com/)
